@@ -20,7 +20,7 @@ const projects = {
       title: "Portfolio Next.js",
       description:
         "Portfolio pessoal construído com Next.js, TailwindCSS e Framer Motion.",
-      image: "/og-image.png",
+      image: "/og-image.jpg",
       technologies: ["Next.js", "React", "TailwindCSS", "TypeScript"],
       githubUrl: "https://github.com/mequeirasmoreira/portfolio",
       liveUrl: "https://portfolio-mequeiras-projects.vercel.app/",
