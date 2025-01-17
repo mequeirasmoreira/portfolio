@@ -1,11 +1,9 @@
-"use client";
 import React from "react";
 import Link from "next/link";
 import {
   useFloating,
   useHover,
   useInteractions,
-  FloatingPortal,
   shift,
   offset,
 } from "@floating-ui/react";
@@ -29,7 +27,7 @@ export const NavChildren: React.FC<NavChildrenProps> = ({
 }) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  const { refs, floatingStyles, context } = useFloating({
+  const { refs, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
     placement: "bottom-start",
@@ -37,7 +35,7 @@ export const NavChildren: React.FC<NavChildrenProps> = ({
   });
 
   const hover = useHover(context);
-  const { getReferenceProps, getFloatingProps } = useInteractions([hover]);
+  const { getReferenceProps } = useInteractions([hover]);
 
   return (
     <Link
