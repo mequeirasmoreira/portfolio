@@ -1,0 +1,7 @@
+plugins:
+  - preset-default:
+      overrides:
+        removeViewBox: false
+        cleanupIDs: false
+  - prefixIds
+  - removeDimensions

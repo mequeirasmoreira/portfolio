@@ -8,6 +8,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        urbanist: ["var(--font-urbanist)"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
