@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState, useCallback } from "react";
 
-type ProjectCategory = "frontend" | "backend" | "data-analysis";
+type ProjectCategory = "frontend" | "backend" | "data-analysis" | "design";
 
 interface ProjectsContextType {
   activeCategory: ProjectCategory;

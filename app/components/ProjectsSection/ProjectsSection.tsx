@@ -5,25 +5,26 @@ import { useCallback, memo } from "react";
 import { ProjectCard } from "./ProjectCard";
 import { useProjects } from "@/app/contexts/ProjectsContext";
 
-type ProjectCategory = "frontend" | "backend" | "data-analysis";
+type ProjectCategory = "frontend" | "backend" | "data-analysis" | "design";
 
 const categories = [
   { id: "frontend", label: "Frontend" },
   { id: "backend", label: "Backend" },
   { id: "data-analysis", label: "Análise de Dados" },
+  { id: "design", label: "Design" },
 ] as const;
 
 const projects = {
   frontend: [
     {
       title: "Portfolio Next.js",
-      description: "Portfolio pessoal construído com Next.js, TailwindCSS e Framer Motion.",
-      image: "/images/projects/portfolio.png",
+      description:
+        "Portfolio pessoal construído com Next.js, TailwindCSS e Framer Motion.",
+      image: "/og-image.png",
       technologies: ["Next.js", "React", "TailwindCSS", "TypeScript"],
-      githubUrl: "https://github.com/username/portfolio",
-      liveUrl: "https://portfolio.dev"
+      githubUrl: "https://github.com/mequeirasmoreira/portfolio",
+      liveUrl: "https://portfolio-mequeiras-projects.vercel.app/",
     },
-    // Adicione mais projetos frontend
   ],
   backend: [
     {
@@ -31,9 +32,8 @@ const projects = {
       description: "API RESTful para sistema de gerenciamento de tarefas.",
       image: "/images/projects/api.png",
       technologies: ["Django", "DRF", "PostgreSQL", "Docker"],
-      githubUrl: "https://github.com/username/api"
+      githubUrl: "https://github.com/mequeirasmoreira/api-rest-django",
     },
-    // Adicione mais projetos backend
   ],
   "data-analysis": [
     {
@@ -41,48 +41,62 @@ const projects = {
       description: "Análise exploratória de dados da COVID-19 no Brasil.",
       image: "/images/projects/covid.png",
       technologies: ["Python", "Pandas", "Matplotlib", "Jupyter"],
-      githubUrl: "https://github.com/username/covid-analysis"
+      githubUrl: "https://github.com/mequeirasmoreira/covid-analysis",
     },
-    // Adicione mais projetos de análise de dados
-  ]
+  ],
+  "design": [
+    {
+      title: "Circulare Brand Design",
+      description: "Desenvolvimento de identidade visual moderna e minimalista para a marca Circulare, focando em design sustentável e circular.",
+      image: "/brand-design.png",
+      technologies: ["Figma", "Concept Design", "Brand Design", "Visual Identity"],
+      liveUrl: "https://www.behance.net/gallery/212960959/Circulare-Brand-Design",
+    },
+  ],
 };
 
-const TabButton = memo(({ 
-  active, 
-  onClick, 
-  children 
-}: { 
-  active: boolean; 
-  onClick: () => void; 
-  children: React.ReactNode;
-}) => (
-  <button
-    onClick={onClick}
-    className={`
+const TabButton = memo(
+  ({
+    active,
+    onClick,
+    children,
+  }: {
+    active: boolean;
+    onClick: () => void;
+    children: React.ReactNode;
+  }) => (
+    <button
+      onClick={onClick}
+      className={`
       px-6 
       py-2 
       rounded-full 
       text-sm 
       font-light 
       transition-colors
-      ${active 
-        ? "bg-blue-500 text-white" 
-        : "text-zinc-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400"
+      ${
+        active
+          ? "bg-blue-500 text-white"
+          : "text-zinc-600 dark:text-slate-400 hover:text-blue-500 dark:hover:text-blue-400"
       }
     `}
-  >
-    {children}
-  </button>
-));
+    >
+      {children}
+    </button>
+  )
+);
 
 TabButton.displayName = "TabButton";
 
 export const ProjectsSection = () => {
   const { activeCategory, setActiveCategory } = useProjects();
 
-  const handleCategoryChange = useCallback((category: ProjectCategory) => {
-    setActiveCategory(category);
-  }, [setActiveCategory]);
+  const handleCategoryChange = useCallback(
+    (category: ProjectCategory) => {
+      setActiveCategory(category);
+    },
+    [setActiveCategory]
+  );
 
   return (
     <motion.section
@@ -115,22 +129,25 @@ export const ProjectsSection = () => {
               text-center
             "
           >
-            Meus{" "}
-            <span className="text-blue-500">Projetos</span>
+            Meus <span className="text-blue-500">Projetos</span>
           </motion.h2>
 
           {/* Tabs */}
-          <div className="
+          <div
+            className="
             flex 
             justify-center 
             gap-4 
             mb-16
-          ">
+          "
+          >
             {categories.map((category) => (
               <TabButton
                 key={category.id}
                 active={activeCategory === category.id}
-                onClick={() => handleCategoryChange(category.id as ProjectCategory)}
+                onClick={() =>
+                  handleCategoryChange(category.id as ProjectCategory)
+                }
               >
                 {category.label}
               </TabButton>
@@ -152,10 +169,7 @@ export const ProjectsSection = () => {
             "
           >
             {projects[activeCategory].map((project) => (
-              <ProjectCard
-                key={project.title}
-                {...project}
-              />
+              <ProjectCard key={project.title} {...project} />
             ))}
           </motion.div>
         </div>
