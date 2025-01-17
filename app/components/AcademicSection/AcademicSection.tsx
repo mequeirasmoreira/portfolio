@@ -203,7 +203,7 @@ export const AcademicSection = () => {
 
           {/* Grid de cards */}
           <div className="space-y-8">
-            {academics.map((academic, index) => (
+            {academics.map((academic) => (
               <AcademicCard key={academic.course} {...academic} />
             ))}
           </div>
