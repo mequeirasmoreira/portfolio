@@ -3,6 +3,7 @@
 import { memo } from "react";
 import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import Image from "next/image";
 
 interface ProjectCardProps {
   title: string;
@@ -48,9 +49,11 @@ export const ProjectCard = memo(({
         to-transparent 
         z-10
       " />
-      <img
+      <Image
         src={image}
         alt={title}
+        width={800}
+        height={400}
         className="
           w-full 
           h-full 
