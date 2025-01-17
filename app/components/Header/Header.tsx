@@ -21,9 +21,6 @@ const Header: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
-  const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const { setActiveCategory } = useProjects();
 
   // Função para verificar a preferência de tema do usuário
