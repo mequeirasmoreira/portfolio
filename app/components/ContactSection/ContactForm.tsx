@@ -25,7 +25,7 @@ export const ContactForm = () => {
     setSubmitStatus("idle");
 
     try {
-      const response = await fetch("http://localhost:8000/send-email", {
+      const response = await fetch("https://backend-portifolio-88hb.onrender.com/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
