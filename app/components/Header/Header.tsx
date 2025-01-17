@@ -11,19 +11,13 @@ import {
   AcademicCapIcon,
   BookOpenIcon,
   CommandLineIcon,
-  ComputerDesktopIcon,
-  PresentationChartLineIcon,
   CodeBracketIcon,
   ChartBarIcon,
 } from "@heroicons/react/24/solid";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { useProjects } from "@/app/contexts/ProjectsContext";
 
-interface HeaderProps {
-  containerClassName?: string;
-}
-
-const Header: React.FC<HeaderProps> = ({ containerClassName }) => {
+const Header: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
