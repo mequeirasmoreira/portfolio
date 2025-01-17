@@ -33,16 +33,18 @@ export const HeroSection = () => {
 
         {/* Conteúdo principal com layout assimétrico */}
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-12 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Coluna da esquerda - Texto principal */}
-            <div className="col-span-7 space-y-16">
+            <div className="lg:col-span-7 space-y-8 lg:space-y-16">
               {/* Nome com efeito de highlight */}
               <motion.h1
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
                 className="
-                  text-8xl 
+                  text-4xl
+                  sm:text-6xl
+                  lg:text-8xl 
                   font-light 
                   tracking-tight 
                   text-zinc-900 
@@ -73,7 +75,8 @@ export const HeroSection = () => {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
                 className="
-                  text-xl 
+                  text-lg
+                  sm:text-xl 
                   leading-relaxed 
                   text-zinc-600 
                   dark:text-slate-300 
@@ -89,14 +92,14 @@ export const HeroSection = () => {
 
             {/* Coluna da direita - Elementos visuais */}
             <motion.div 
-              className="col-span-5 relative"
+              className="lg:col-span-5 relative mt-8 lg:mt-0"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6 }}
             >
               {/* Círculos flutuantes com blur */}
-              <div className="absolute size-64 rounded-full bg-blue-500/20 blur-3xl -top-20 -right-20" />
-              <div className="absolute size-48 rounded-full bg-purple-500/10 blur-3xl bottom-0 left-0" />
+              <div className="absolute size-32 sm:size-48 lg:size-64 rounded-full bg-blue-500/20 blur-3xl -top-10 -right-10 lg:-top-20 lg:-right-20" />
+              <div className="absolute size-24 sm:size-32 lg:size-48 rounded-full bg-purple-500/10 blur-3xl bottom-0 left-0" />
 
               <TechStack />
             </motion.div>

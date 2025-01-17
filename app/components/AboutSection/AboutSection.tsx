@@ -53,20 +53,22 @@ export const AboutSection = () => {
       <div className="container mx-auto px-4 relative">
         <div className="max-w-6xl mx-auto">
           {/* Grid principal */}
-          <div className="grid grid-cols-12 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Coluna da esquerda - Estatísticas */}
-            <div className="col-span-5">
+            <div className="lg:col-span-5">
               <div
                 className="
-                sticky 
-                top-32 
-                space-y-16
+                lg:sticky 
+                lg:top-32 
+                space-y-8
+                lg:space-y-16
               "
               >
                 {/* Título da seção */}
                 <h2
                   className="
-                  text-3xl 
+                  text-2xl
+                  sm:text-3xl 
                   font-light 
                   text-zinc-900 
                   dark:text-slate-50
@@ -77,12 +79,13 @@ export const AboutSection = () => {
                 </h2>
 
                 {/* Grid de estatísticas */}
-                <div className="grid grid-cols-2 gap-8">
+                <div className="grid grid-cols-2 gap-4 sm:gap-8">
                   {stats.map((stat) => (
                     <div
                       key={stat.label}
                       className="
-                        p-6 
+                        p-4
+                        sm:p-6 
                         rounded-2xl 
                         border 
                         border-zinc-200/50 
@@ -92,7 +95,8 @@ export const AboutSection = () => {
                     >
                       <div
                         className="
-                        text-3xl 
+                        text-2xl
+                        sm:text-3xl 
                         font-light 
                         text-blue-500 
                         mb-2
@@ -100,13 +104,7 @@ export const AboutSection = () => {
                       >
                         {stat.value}
                       </div>
-                      <div
-                        className="
-                        text-sm 
-                        text-zinc-600 
-                        dark:text-slate-400
-                      "
-                      >
+                      <div className="text-sm sm:text-base text-zinc-600 dark:text-slate-400">
                         {stat.label}
                       </div>
                     </div>
@@ -115,101 +113,58 @@ export const AboutSection = () => {
               </div>
             </div>
 
-            {/* Coluna da direita - Timeline de experiência */}
-            <div className="col-span-7 space-y-32">
-              {/* Cada bloco de experiência */}
-              {experiences.map((experience, index) => (
-                <div
-                  key={index}
-                  className="
-                    relative 
-                    p-8 
-                    rounded-2xl 
-                    border 
-                    border-zinc-200/50 
-                    dark:border-zinc-800/50
-                    backdrop-blur-sm
-                  "
-                >
-                  {/* Indicador da timeline */}
-                  <div
-                    className="
-                    absolute 
-                    -left-[25px] 
-                    top-1/2 
-                    -translate-y-1/2 
-                    size-3 
-                    rounded-full 
-                    bg-blue-500/50 
-                    ring-4 
-                    ring-slate-50 
-                    dark:ring-zinc-900
-                  "
-                  />
+            {/* Coluna da direita - Experiência */}
+            <div className="lg:col-span-7">
+              <div className="space-y-16">
+                {/* Lista de experiências */}
+                <div className="space-y-12">
+                  {experiences.map((experience, index) => (
+                    <div
+                      key={index}
+                      className="
+                        p-6
+                        sm:p-8 
+                        rounded-2xl 
+                        border 
+                        border-zinc-200/50 
+                        dark:border-zinc-800/50 
+                        backdrop-blur-sm
+                      "
+                    >
+                      <div className="space-y-6">
+                        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                          <span className="text-sm text-blue-500">{experience.period}</span>
+                          <h3 className="text-xl sm:text-2xl font-light text-zinc-900 dark:text-slate-50">
+                            {experience.role}
+                          </h3>
+                        </div>
 
-                  {/* Período */}
-                  <div
-                    className="
-                    text-sm 
-                    text-zinc-500 
-                    dark:text-slate-400 
-                    mb-4
-                  "
-                  >
-                    {experience.period}
-                  </div>
+                        <p className="text-base sm:text-lg text-zinc-600 dark:text-slate-400">
+                          {experience.description}
+                        </p>
 
-                  {/* Cargo */}
-                  <h3
-                    className="
-                    text-xl 
-                    text-zinc-900 
-                    dark:text-slate-50 
-                    mb-4
-                  "
-                  >
-                    {experience.role}
-                  </h3>
-
-                  {/* Descrição */}
-                  <p
-                    className="
-                    text-zinc-600 
-                    dark:text-slate-400 
-                    leading-relaxed
-                  "
-                  >
-                    {experience.description}
-                  </p>
-
-                  {/* Tags de tecnologias */}
-                  <div
-                    className="
-                    mt-6 
-                    flex 
-                    flex-wrap 
-                    gap-2
-                  "
-                  >
-                    {experience.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="
-                          px-3 
-                          py-1 
-                          text-xs 
-                          rounded-full 
-                          bg-blue-500/10 
-                          text-blue-500 
-                          dark:bg-blue-500/5
-                        "
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                        <div className="flex flex-wrap gap-2">
+                          {experience.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="
+                                px-3 
+                                py-1 
+                                text-sm
+                                rounded-full 
+                                bg-blue-500/10 
+                                text-blue-500
+                              "
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
